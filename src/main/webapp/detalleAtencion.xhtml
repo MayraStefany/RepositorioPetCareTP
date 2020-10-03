@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Atencion:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Atencion</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Registro de Atencion</h3>
+		<div class="col-sm-10" align="center">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idAtencion" value="Codigo de la Atencion: "
+					styleClass="control-label" />
+				<h:outputLabel for="idAtencion" styleClass="form-control"
+					value="#{atencionController.atencion.idAtencion}" />
+				<br />
+				<br />
+				<h:outputLabel for="reservaAtencion" value="Código de la atención: "
+					styleClass="control-label" />
+				<h:outputLabel id="reservaAtencion"
+					value="#{atencionController.atencion.reservaAtencion.idReserva}"
+					styleClass="form-control">
+				</h:outputLabel>
+				<h:outputLabel id="reservaAtencionNC"
+					value="#{atencionController.atencion.reservaAtencion.clienteReserva.nombreCliente}"
+					styleClass="form-control">
+				</h:outputLabel>
+				<h:outputLabel id="reservaAtencionNV"
+					value="#{atencionController.atencion.reservaAtencion.veterinariaReserva.nombreVeterinaria}"
+					styleClass="form-control">
+				</h:outputLabel>
+				<br />
+				<br />
+
+				<h:outputLabel for="calificacionAtencion" value="Calificación:"
+					styleClass="control-label" />
+				<h:outputLabel for="calificacionAtencion" styleClass="form-control"
+					value="#{atencionController.atencion.clasificacionAtencion}">
+					
+				</h:outputLabel>
+				<br />
+				<br />
+				<br />
+
+				<h:outputLabel for="descripcionAtencion" value="Descripción: "
+					styleClass="control-label" />
+				<h:outputLabel for="descripcionAtencion"
+					styleClass="form-control"
+					value="#{atencionController.atencion.descripcionAtencion}"
+					 />
+
+
+				<br />
+				<br />
+				<br />
+
+
+			
+				<p:commandButton value="Regresar"
+					action="listAtencion?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

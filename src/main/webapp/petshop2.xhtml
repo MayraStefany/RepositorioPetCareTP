@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Petshops:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Petshop</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Registro de Petshop</h3>
+		<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idPetshop" value="Codigo de la petshop:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="idPetshop"
+					styleClass="form-control" 
+					value="#{petshopController.petshop.idPetshop}" required="true" />
+
+				<h:outputLabel for="nombrePetshop"
+					value="Nombre comercial del petshop:" styleClass="control-label" />
+				<p:inputText autocomplete="off" id="nombrePetshop"
+					styleClass="form-control"
+					value="#{petshopController.petshop.nombrePetshop}" maxlength="50"
+					required="true" />
+
+				<h:outputLabel for="descripcionPetshop"
+					value="Descripcion del petshop:" styleClass="control-label" />
+				<br />
+				<p:selectOneMenu id="descripcionPetshop"
+					value="#{petshopController.petshop.descripcionPetshop}">
+					<f:selectItem itemLabel="--Select--" noSelectionOption="true" />
+					<f:selectItem
+						itemLabel="Dedicada a venta de alimento para mascotas"
+						itemValue="Dedicada a venta de alimento para mascotas" />
+					<f:selectItem
+						itemLabel="Dedicada a venta de juguetes para mascotas"
+						itemValue="Dedicada a venta de Juguetes para mascotas" />
+					<f:selectItem itemLabel="Dedicada a venta de ropa para mascotas"
+						itemValue="Dedicada a venta de ropa para mascotas" />
+					<f:selectItem
+						itemLabel="Dedicada a venta de ropa y juguetes para mascotas"
+						itemValue="Dedicada a venta de ropa y juguetes para mascotas" />
+					<f:selectItem
+						itemLabel="Dedicada a venta de ropa y alimento para mascotas"
+						itemValue="Dedicada a venta de ropa y alimento para mascotas" />
+					<f:selectItem
+						itemLabel="Dedicada a venta de juguetes y alimento para mascotas"
+						itemValue="Dedicada a venta de juguetes y alimento para mascotas" />
+					<f:selectItem
+						itemLabel="Dedicada a venta de ropa, juguetes y alimento para mascotas"
+						itemValue="Dedicada a venta de ropa, juguetes y alimento para mascotas" />
+					<f:selectItem itemLabel="Otro" itemValue="Otro" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br />
+
+				<h:outputLabel for="ubicacionPetshop"
+					value="Direccion de la Petshop:" styleClass="control-label" />
+				<p:inputText autocomplete="off" id="ubicacionPetshop"
+					styleClass="form-control"
+					value="#{petshopController.petshop.ubicacionPetshop}"
+					maxlength="70" required="true" />
+
+				<h:outputLabel for="numeroPetshop"
+					value="Número de contacto para pedidos del petshop:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="numeroPetshop"
+					styleClass="form-control"
+					value="#{petshopController.petshop.celularPetshop}" maxlength="9"
+					required="true" />
+
+				<h:outputLabel for="webPetshop"
+					value="Paguina web oficial de la petshop:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="webPetshop"
+					styleClass="form-control"
+					value="#{petshopController.petshop.webPetshop}" maxlength="50"
+					required="true" />
+
+				<h:outputLabel for="distritoPetshop"
+					value="Distrito en el que se encuentra la Petshop"
+					styleClass="control-label" />
+				<br />
+				<p:selectOneMenu id="distritoPetshop"
+					value="#{petshopController.petshop.distritoPetshop}">
+					<f:selectItem itemLabel="--Select--" noSelectionOption="true" />
+					<f:selectItem itemLabel="Surco" itemValue="Surco" />
+					<f:selectItem itemLabel="San_Isidro" itemValue="San_Isidro" />
+					<f:selectItem itemLabel="Miraflores" itemValue="Miraflores" />
+					<f:selectItem itemLabel="Magdalena" itemValue="Magdalena" />
+					<f:selectItem itemLabel="San_Borja" itemValue="San_Borja" />
+					<f:selectItem itemLabel="Barranco" itemValue="Barranco" />
+					<f:selectItem itemLabel="Otro" itemValue="Otro" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br />
+
+				<br />
+
+
+				<p:commandButton value="Actualizar"
+					actionListener="#{petshopController.modificar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="listPetshop?faces-redirect=true" />
+				<p:commandButton value="Cancelar"
+					action="listPetshop?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

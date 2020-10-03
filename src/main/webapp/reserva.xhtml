@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Reserva:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Reserva</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Registro de Reserva</h3>
+		<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idCliente" value="Codigo de la reserva:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="idReserva"
+					styleClass="form-control" disabled="true"
+					value="#{reservaController.reserva.idReserva}" required="true" />
+				<br />
+				<br />
+				<h:outputLabel for="nombreCliente" value="Nombres del cliente:"
+					styleClass="control-label" />
+				<p:selectOneMenu id="nombreCliente"
+					value="#{reservaController.reserva.clienteReserva}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems value="#{reservaController.listaClientes}" var="pt"
+						itemLabel="#{pt.nombreCliente}" itemValue="#{m}" />
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<h:outputLabel for="nombreVeterinaria" value="Veterinaria: "
+					styleClass="control-label" />
+				<p:selectOneMenu id="nombreVeterinaria"
+					value="#{reservaController.reserva.veterinariaReserva}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems value="#{reservaController.listaVeterinarias}"
+						var="pt" itemLabel="#{pt.nombreVeterinaria}" itemValue="#{m}" />
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<h:outputLabel for="nombreMascota" value="Nombre de la mascota: "
+					styleClass="control-label" />
+				<p:selectOneMenu id="nombreMascota"
+					value="#{reservaController.reserva.mascotaReserva}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems value="#{reservaController.listaMascotas}" var="pt"
+						itemLabel="#{pt.nombreMascota}" itemValue="#{m}" />
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<h:outputLabel for="fechaReserva" value="Fecha de la reserva:"
+					styleClass="control-label" />
+				<p:calendar id="fechaReserva" pattern="dd/MM/yyyy"
+					value="#{reservaController.reserva.fechaReserva}" showOn="button"
+					timeZone="UTC" required="true">
+				</p:calendar>
+				<br />
+				<br />
+				<h:outputLabel for="estadoReserva" value="Estado de la Reserva:"
+					styleClass="control-label" />
+				<p:selectOneMenu id="estadoReserva"
+					value="#{reservaController.reserva.estadoReserva}">
+					<f:selectItem itemLabel="--Select--" noSelectionOption="true" />
+					<f:selectItem itemLabel="Pendiente" itemValue="Pendiente" />
+					<f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
+					<f:selectItem itemLabel="Realidazo" itemValue="Realidazo" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br />
+				<br />
+
+
+
+				<h:outputLabel for="descripcionReserva" value="Descripción: "
+					styleClass="control-label" />
+				<p:inputTextarea autocomplete="off" id="descripcionReserva"
+					styleClass="form-control"
+					value="#{reservaController.reserva.descripcionReserva}"
+					maxlength="60" required="true" />
+
+
+				<br />
+				<br />
+
+
+				<p:commandButton value="Grabar"
+					actionListener="#{reservaController.insertar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="listReserva?faces-redirect=true" />
+				<p:commandButton value="Cancelar"
+					action="listReserva?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

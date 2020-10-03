@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Clientes:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Cliente</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Registro de Compras</h3>
+		<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idCliente" value="Codigo del cliente:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="idCliente"
+					styleClass="form-control"
+					value="#{clienteController.cliente.idCliente}" required="true" />
+
+				<h:outputLabel for="nombreCliente" value="Nombres del cliente:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="nombreCliente"
+					styleClass="form-control"
+					value="#{clienteController.cliente.nombreCliente}" maxlength="40"
+					required="true" />
+
+				<h:outputLabel for="apellidoCliente" value="Apellidos del cliente:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="apellidoCliente"
+					styleClass="form-control"
+					value="#{clienteController.cliente.apellidoCliente}" maxlength="40"
+					required="true" />
+
+				<h:outputLabel for="dniCliente" value="DNI del cliente:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="dniCliente"
+					styleClass="form-control"
+					value="#{clienteController.cliente.dniCliente}" maxlength="8"
+					required="true" />
+
+				<h:outputLabel for="edadCliente" value="Edad del cliente:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="edadCliente"
+					styleClass="form-control"
+					value="#{clienteController.cliente.edadCliente}" maxlength="3"
+					required="true" />
+
+				<h:outputLabel for="direccionCliente" value="Direccion del cliente:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="direccionCliente"
+					styleClass="form-control"
+					value="#{clienteController.cliente.direccionCliente}"
+					maxlength="70" required="true" />
+
+				<h:outputLabel for="generoCliente" value="Genero del cliente:"
+					styleClass="control-label" />
+				<br />
+				<p:selectOneMenu id="generoCliente"
+					value="#{clienteController.cliente.generoCliente}">
+					<f:selectItem itemLabel="--Select--" noSelectionOption="true" />
+					<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+					<f:selectItem itemLabel="Femenino" itemValue="Femenino" />
+					<f:selectItem itemLabel="Otro" itemValue="Otro" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br />
+
+				<h:outputLabel for="celularCliente"
+					value="Ingrese el número celular del contacto del cliente:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="celularCliente"
+					styleClass="form-control"
+					value="#{clienteController.cliente.celularCliente}" maxlength="9"
+					required="true" />
+
+				<h:outputLabel for="correoCliente"
+					value="Correo electronico del cliente:" styleClass="control-label" />
+				<p:inputText autocomplete="off" id="correoCliente"
+					styleClass="form-control"
+					value="#{clienteController.cliente.correoCliente}" maxlength="70"
+					required="true" />
+
+
+				<br />
+
+
+				<p:commandButton value="Actualizar"
+					actionListener="#{clienteController.modificar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="listCliente?faces-redirect=true" />
+				<p:commandButton value="Cancelar"
+					action="listCliente?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Recetas:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Recetas</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Registro de Recetas</h3>
+		<div class="col-sm-10" align="center">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idReceta" value="Codigo de la Recetas: "
+					styleClass="control-label" />
+				<h:outputLabel for="idReceta" styleClass="form-control"
+					value="#{recetaController.receta.idReceta}" />
+				<br />
+				<br />
+				<h:outputLabel for="atencionReceta" value="Código de la atención: "
+					styleClass="control-label" />
+				<h:outputLabel id="atencionReceta"
+					value="#{recetaController.receta.atencionReceta.idAtencion}"
+					styleClass="form-control">
+				</h:outputLabel>
+				<h:outputLabel id="atencionRecetaN"
+					value="#{recetaController.receta.atencionReceta.reservaAtencion.clienteReserva.nombreCliente}"
+					styleClass="form-control">
+				</h:outputLabel>
+				<br />
+				<br />
+
+
+				<h:outputLabel for="descripcionReceta" value="Descripción: "
+					styleClass="control-label" />
+				<h:outputLabel for="descripcionReceta" styleClass="form-control"
+					value="#{recetaController.receta.descripcionReceta}" />
+				<br />
+				<br />
+				<br />
+				<h:outputLabel for="totalReceta" value="Precio total de la receta: "
+					styleClass="control-label" />
+				<h:outputLabel for="totalReceta" styleClass="form-control"
+					value="#{recetaController.receta.totalReceta}" />
+				<br />
+				<br />
+				<br />
+				<h:outputLabel for="igvReceta" value="IGV de la receta: "
+					styleClass="control-label" />
+				<h:outputLabel for="igvReceta" styleClass="form-control"
+					value="#{recetaController.receta.igvReceta}" />
+				<br />
+				<br />
+				<br />
+
+
+				<p:commandButton value="Regresar"
+					action="listRecetas?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

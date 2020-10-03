@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Medico Veterinario:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Medico Veterinario</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Registro de Medico Veterinario</h3>
+		<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idMedico"
+					value="Codigo del Medico Veterinario: " styleClass="control-label" />
+				<p:inputText autocomplete="off" id="idMedico"
+					styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.idMedicoVeterinario}"
+					required="true" />
+				<br />
+				<br />
+				<h:outputLabel for="veterinariaMedico" value="Veterinaria: "
+					styleClass="control-label" />
+				<p:selectOneMenu id="veterinariaMedico"
+					value="#{medicoVeterinarioController.medicoVeterinario.veterinariaMedico}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems
+						value="#{medicoVeterinarioController.listaVeterinarias}" var="cli"
+						itemLabel="#{cli.idVeterinaria} - #{cli.nombreVeterinaria}"
+						itemValue="#{m}" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br />
+				<br />
+
+				<h:outputLabel for="institucionMedico"
+					value="Institución que certifica al médico:"
+					styleClass="control-label" />
+				<p:selectOneMenu id="institucionMedico"
+					value="#{medicoVeterinarioController.medicoVeterinario.institucionMedico}">
+					<f:selectItem itemLabel="--Select--" noSelectionOption="true" />
+					<f:selectItem itemLabel="UPC" itemValue="UPC" />
+					<f:selectItem itemLabel="Cayetano" itemValue="Cayetano" />
+					<f:selectItem itemLabel="San Marcos" itemValue="San Marcos" />
+					<f:selectItem itemLabel="San Pablo" itemValue="San Pablo" />
+					<f:selectItem itemLabel="Otro" itemValue="Otro" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br />
+				<br />
+				<br />
+
+				<h:outputLabel for="direccionMedico" value="Dirección del Médico: "
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="direccionMedico"
+					styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.direccionMedico}"
+					maxlength="70" required="true" />
+
+
+				<br />
+				<br />
+				<br />
+
+				<h:outputLabel for="nombreMedico" value="Nombre del Médico: "
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="nombreMedico"
+					styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.nombreMedico}"
+					maxlength="40" required="true" />
+
+
+				<br />
+				<br />
+				<br />
+
+				<h:outputLabel for="edadMedico" value="Edad del Médico: "
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="edadMedico"
+					styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.edadMedico}"
+					maxlength="2" required="true" />
+
+
+				<br />
+				<br />
+				<br />
+
+				<h:outputLabel for="dniMedico" value="DNI del Médico: "
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="dniMedico"
+					styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.dniMedico}"
+					maxlength="8" required="true" />
+
+
+				<br />
+				<br />
+				<br />
+				<h:outputLabel for="estadoMedico" value="Estado del Médico: "
+					styleClass="control-label" />
+				<p:selectOneMenu id="estadoMedico"
+					value="#{medicoVeterinarioController.medicoVeterinario.estadoMedico}">
+					<f:selectItem itemLabel="--Select--" noSelectionOption="true" />
+					<f:selectItem itemLabel="Activo" itemValue="Activo" />
+					<f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+					<f:selectItem itemLabel="Ausente" itemValue="Ausente" />
+					<f:selectItem itemLabel="Retirado" itemValue="Retirado" />
+
+				</p:selectOneMenu>
+
+
+				<br />
+				<br />
+				<br />
+
+				<p:commandButton value="Actualizar"
+					actionListener="#{medicoVeterinarioController.modificar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="listMedicoVeterinario?faces-redirect=true" />
+				<p:commandButton value="Cancelar"
+					action="listMedicoVeterinario?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

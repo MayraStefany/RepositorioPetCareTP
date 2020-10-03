@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="master.xhtml">
+	<ui:define name="title">
+        .:Listado de Medicos Veterinarios:.
+    </ui:define>
+	<ui:define name="titleCont">
+		<span>Medicos Veterinarios</span>
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h3 style="margin-left: 5%">Lista de Medicos Veterinarios</h3>
+			<div class="row" align="center">
+				<p:commandButton value="Nuevo"
+					action="#{medicoVeterinarioController.nuevaMedicoVeterinario()}"
+					styleClass="btn btn-primary" ajax="false" style="margin-left:85%" />
+			</div>
+			<br></br>
+			<div class="row">
+				<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstAtencion" var="mot"
+							value="#{medicoVeterinarioController.listaMedicoVeterinarios}"
+							paginator="true" paginatorPosition="top"
+							rowsPerPageTemplate="10,20,30,40,50" rows="10"
+							styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="Id" sortBy="#{mot.idMedicoVeterinario}">
+								<h:commandLink value="#{mot.idMedicoVeterinario}"
+									class="btn btn-primary btn-xs"
+									action="#{medicoVeterinarioController.detallesMedicoVeterinario(mot)}" />
+							</p:column>
+
+							<p:column headerText="Veterinaria" sortBy="#{mot.veterinariaMedico}">
+								<h:outputText value="#{mot.veterinariaMedico.nombreVeterinaria}" />
+							</p:column>
+
+							<p:column headerText="Nombre"
+								sortBy="#{mot.nombreMedico}">
+								<h:outputText value="#{mot.nombreMedico}" />
+							</p:column>
+
+
+
+
+
+
+
+							<p:column headerText="Operación" exportable="false"
+								style=" justify-content: space-around;">
+
+								<h:commandLink action="lstlstMedicamento" value="Eliminar"
+									style="color:red; display:flex;"
+									actionListener="#{medicoVeterinarioController.eliminar(mot)}" />
+
+								<h:commandLink value="Modificar"
+									action="#{medicoVeterinarioController.ModifMedicoVeterinario(mot)}"
+									style="color:blue;" />
+
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+	<ui:define name="footerCont">
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Petcare</title>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"></meta>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+	<meta name="description" content=""></meta>
+	<meta name="keywords" content=""></meta>
+	<meta name="author" content="Phoenixcoded"></meta>
+	<link rel="icon" href="resources/assets/images/favicon.ico"
+		type="image/x-icon"></link>
+	<link rel="stylesheet" href="resources/assets/css/style.css"></link>
+	<h:outputStylesheet name="resources/assets/images/favicon.icos"
+		rel="icon" type="image/x-icon" />
+	<h:outputStylesheet name="assets/css/style.css" rel="stylesheet" />
+
+
+	<ui:insert name="headCont"></ui:insert>
+</h:head>
+<h:body class="">
+
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar menu-light ">
+		<div class="navbar-wrapper  ">
+			<div class="navbar-content scroll-div ">
+
+
+				<ul class="nav pcoded-inner-navbar ">
+
+					<li class="nav-item pcoded-menu-caption"><label>Navigation</label>
+					</li>
+
+					<li class="nav-item"><a href="panel.xhtml" class="nav-link "><span
+							class="pcoded-micon"><i class="feather icon-home"></i></span><span
+							class="pcoded-mtext">Inicio</span></a></li>
+
+					<li class="nav-item"><a href="listMascota.xhtml"
+						class="nav-link "><span class="pcoded-micon"><img
+								src="resources/assets/images/paw.png" width="20px" height="20px"></img></span><span
+							class="pcoded-mtext">Lista Mascotas</span></a></li>
+
+					<li class="nav-item"><a href="listCliente.xhtml"
+						class="nav-link "><span class="pcoded-micon"><i
+								class="feather icon-users"></i></span><span class="pcoded-mtext">Lista
+								de Clientes</span></a></li>
+
+					<li class="nav-item"><a href="listVeterinaria.xhtml"
+						class="nav-link "><span class="pcoded-micon"><i
+								class="feather icon-heart"></i></span><span class="pcoded-mtext">Lista
+								de Veterinarias</span></a></li>
+
+					<li class="nav-item"><a href="listPetshop.xhtml"
+						class="nav-link "><span class="pcoded-micon"><i
+								class="feather icon-shopping-cart"></i></span><span
+							class="pcoded-mtext">Lista de Petshops</span></a></li>
+
+					<li class="nav-item"><a href="listReserva.xhtml"
+						class="nav-link "><span class="pcoded-micon"><i
+								class="feather icon-book"></i></span><span class="pcoded-mtext">Lista
+								de Reservas</span></a></li>
+
+					<li class="nav-item"><a href="listAtencion.xhtml"
+						class="nav-link "><span class="pcoded-micon"><i
+								class="feather icon-triangle"></i></span><span class="pcoded-mtext">Lista
+								de Atencion</span></a></li>
+
+					<li class="nav-item"><a href="listRecetas.xhtml"
+						class="nav-link "><span class="pcoded-micon"><i
+								class="feather icon-bookmark"></i></span><span class="pcoded-mtext">Lista
+								de Recetas</span></a></li>
+
+					<li class="nav-item"><a href="listMedicoVeterinario.xhtml"
+						class="nav-link "><span class="pcoded-micon"><i
+								class="feather icon-user"></i></span><span class="pcoded-mtext">Medicos
+								Veterinarios</span></a></li>
+
+					<li class="nav-item"><a href="listMedicamento.xhtml"
+						class="nav-link "><span class="pcoded-micon"><i
+								class="feather icon-moon"></i></span><span class="pcoded-mtext">Lista
+								de Medicamentos</span></a></li>
+
+					<li class="nav-item"><a href="listProducto.xhtml"
+						class="nav-link "><span class="pcoded-micon"><i
+								class="feather icon-box"></i></span><span class="pcoded-mtext">Lista
+								de Productos</span></a></li>
+
+
+
+
+
+					<li class="nav-item"><a href="listCompra.xhtml"
+						class="nav-link "><span class="pcoded-micon"><i
+								class="feather icon-cloud"></i></span><span class="pcoded-mtext">Lista
+								de Compras</span></a></li>
+
+
+
+
+				</ul>
+
+
+
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+	<!-- [ Header ] start -->
+	<header
+		class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+
+
+		<div class="m-header">
+			<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+			<a href="#!" class="b-brand"> <!-- ========   change your logo hear   ============ -->
+				<img src="resources/assets/images/PetCare_logo.png" alt=""
+				class="logo" height="50px" width="180px"></img></a> <a href="#!"
+				class="mob-toggler"> <i class="feather icon-more-vertical"></i>
+			</a>
+		</div>
+		<div class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<div class="search-bar">
+						<input type="text" class="form-control border-0 shadow-none"
+							placeholder="Search hear"></input>
+						<button type="button" class="close" aria-label="Close"></button>
+					</div>
+				</li>
+			</ul>
+			<div class="col-sm-10">
+				<ul class="navbar-nav ml-auto">
+
+
+					<li>
+						<div class="dropdown drp-user">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <i
+								class="feather icon-user"></i>
+							</a>
+							<div
+								class="dropdown-menu dropdown-menu-right profile-notification">
+								<div class="pro-head">
+									<span>Mafer (Admin)</span> <a href="login.xhtml"
+										class="dud-logout" title="Logout"> <i
+										class="feather icon-log-out"></i>
+									</a>
+								</div>
+								<ul class="pro-body">
+									<li><a href="listVeterinaria.xhtml" class="dropdown-item"><i
+											class="feather icon-user"></i> Veterinarias</a></li>
+									<li><a href="listPetshop.xhtml" class="dropdown-item"><i
+											class="feather icon-mail"></i> Petshops</a></li>
+									<li><a href="listMascota.xhtml" class="dropdown-item"><i
+											class="feather icon-lock"></i> Mascotas</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+
+
+	</header>
+	<!-- [ Header ] end -->
+
+
+
+	<!-- [ Main Content ] start -->
+	<div class="pcoded-main-container">
+		<div class="pcoded-content">
+			<!-- [ breadcrumb ] start -->
+			<div class="page-header">
+				<div class="page-block">
+					<div class="row align-items-center">
+						<div class="col-md-12">
+							<div class="page-header-title">
+								<h4 class="m-b-10">Dashboard</h4>
+							</div>
+							<ul class="breadcrumb">
+								<li class="breadcrumb-item"><a href="index.html"><i
+										class="feather icon-home"></i></a></li>
+								<li class="breadcrumb-item"><a href="#!">Petcare </a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- [ breadcrumb ] end -->
+			<!-- [ Main Content ] start -->
+
+		</div>
+		<ui:insert name="content">
+		</ui:insert>
+		<!-- [ Main Content ] end -->
+	</div>
+
+
+	<!-- Required Js -->
+
+	<!-- ....................................... -->
+	<!-- <script src="resources/assets/js/vendor-all.min.js"></script>-->
+	<!-- ....................................... -->
+
+	<script src="resources/assets/js/plugins/bootstrap.min.js"></script>
+	<script src="resources/assets/js/ripple.js"></script>
+	<script src="resources/assets/js/pcoded.min.js"></script>
+
+	<!-- Apex Chart -->
+	<script src="resources/assets/js/plugins/apexcharts.min.js"></script>
+
+
+	<!-- custom-chart js -->
+	<script src="resources/assets/js/pages/dashboard-main.js"></script>
+
+	<ui:insert name="footerCont"></ui:insert>
+
+
+</h:body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="master.xhtml">
+	<ui:define name="title">
+        .:Listado de Petshops:.
+    </ui:define>
+	<ui:define name="titleCont">
+		<span>Petshops</span>
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h3 style="margin-left: 5%">Lista de Petshop</h3>
+			<div class="row" align="center">
+				<p:commandButton value="Nuevo"
+					action="#{petshopController.nuevoPetshop()}"
+					styleClass="btn btn-primary" ajax="false" style="margin-left:85%" />
+			</div>
+			<br></br>
+			<div class="row">
+				<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstPetshop" var="mot"
+							value="#{petshopController.listaPetshops}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="Id" sortBy="#{mot.idPetshop}">
+								<h:commandLink value="#{mot.idPetshop}"
+									class="btn btn-primary btn-xs"
+									action="#{petshopController.detallesPetshop(mot)}" />
+							</p:column>
+
+							<p:column headerText="Nombre" sortBy="#{mot.nombrePetshop}">
+								<h:outputText value="#{mot.nombrePetshop}" />
+							</p:column>
+
+							<p:column headerText="Distrito" sortBy="#{mot.distritoPetshop}">
+								<h:outputText value="#{mot.distritoPetshop}" />
+							</p:column>
+
+							<p:column headerText="Contacto" sortBy="#{mot.celularPetshop}">
+								<h:outputText value="#{mot.celularPetshop}" />
+							</p:column>
+
+
+
+
+
+							<p:column headerText="Operación" exportable="false"
+								style=" justify-content: space-around;">
+
+								<h:commandLink action="lstlstPetshop" value="Eliminar"
+									style="color:red; display:flex;"
+									actionListener="#{petshopController.eliminar(mot)}" />
+
+								<h:commandLink value="Modificar"
+									action="#{petshopController.ModifPetshop(mot)}"
+									style="color:blue;" />
+
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+	<ui:define name="footerCont">
+	</ui:define>
+</ui:composition>
+</html>

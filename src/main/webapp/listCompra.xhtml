@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="master.xhtml">
+	<ui:define name="title">
+        .:Listado de Compras:.
+    </ui:define>
+	<ui:define name="titleCont">
+		<span>Compras </span>
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h3 style="margin-left: 5%">Lista de Compras</h3>
+			<div class="row" align="center">
+				<p:commandButton value="Nuevo"
+					action="#{compraController.nuevaCompra()}"
+					styleClass="btn btn-primary" ajax="false" style="margin-left:85%" />
+			</div>
+			<br></br>
+			<div class="row">
+				<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstCompra" var="mot"
+							value="#{compraController.listaCompras}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="Id" sortBy="#{mot.idCompra}">
+								<h:outputText value="#{mot.idCompra}" />
+							</p:column>
+
+							<p:column headerText="Cliente"
+								sortBy="#{mot.clienteCompra.nombreCliente}">
+								<h:outputText value="#{mot.clienteCompra.nombreCliente}">
+								</h:outputText>
+							</p:column>
+
+							<p:column headerText="Petshop"
+								sortBy="#{mot.petshopCompra.nombrePetshop}">
+								<h:outputText value="#{mot.petshopCompra.nombrePetshop}">
+								</h:outputText>
+							</p:column>
+
+							<p:column headerText="Total" sortBy="#{mot.totalCompra}">
+								<h:outputText value="#{mot.totalCompra}" />
+							</p:column>
+							
+							<p:column headerText="IGV" sortBy="#{mot.igvCompra}">
+								<h:outputText value="#{mot.igvCompra}" />
+							</p:column>
+
+
+
+
+
+							<p:column headerText="Operación" exportable="false"
+								style=" justify-content: space-around;">
+
+								<h:commandLink action="lstlstCompra" value="Eliminar"
+									style="color:red; display:flex;"
+									actionListener="#{compraController.eliminar(mot)}" />
+
+								<h:commandLink value="Modificar"
+									action="#{compraController.ModifCompra(mot)}"
+									style="color:blue;" />
+
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+	<ui:define name="footerCont">
+	</ui:define>
+</ui:composition>
+</html>

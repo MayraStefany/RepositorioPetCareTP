@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Atencion:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Atencion</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Registro de Atencion</h3>
+		<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idAtencion" value="Codigo de la Atencion: "
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="idAtencion"
+					styleClass="form-control" disabled="true"
+					value="#{atencionController.atencion.idAtencion}" required="true" />
+		<br /><br />
+				<h:outputLabel for="reservaAtencion" value="Código de la atención: "
+					styleClass="control-label" />
+				<p:selectOneMenu id="reservaAtencion"
+					value="#{atencionController.atencion.reservaAtencion}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems value="#{atencionController.listaReservas}"
+						var="cli"
+						itemLabel="#{cli.idReserva} - #{cli.clienteReserva.nombreCliente}"
+						itemValue="#{m}" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br /><br />
+
+				<h:outputLabel for="calificacionAtencion" value="Calificación:"
+					styleClass="control-label" />
+				<p:selectOneMenu id="calificacionAtencion"
+					value="#{atencionController.atencion.clasificacionAtencion}">
+					<f:selectItem itemLabel="--Select--" noSelectionOption="true" />
+					<f:selectItem itemLabel="1-Muy Malo" itemValue="1" />
+					<f:selectItem itemLabel="2-Malo" itemValue="2" />
+					<f:selectItem itemLabel="3-Regular" itemValue="3" />
+					<f:selectItem itemLabel="4-Bueno" itemValue="4" />
+					<f:selectItem itemLabel="5-Muy Bueno" itemValue="5" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br />		<br /><br />
+
+				<h:outputLabel for="descripcionAtencion" value="Descripción: "
+					styleClass="control-label" />
+				<p:inputTextarea autocomplete="off" id="descripcionAtencion"
+					styleClass="form-control"
+					value="#{atencionController.atencion.descripcionAtencion}"
+					maxlength="60" required="true" />
+
+
+		<br /><br />
+				<br />
+
+
+				<p:commandButton value="Grabar"
+					actionListener="#{atencionController.insertar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="listAtencion?faces-redirect=true" />
+				<p:commandButton value="Cancelar"
+					action="listAtencion?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

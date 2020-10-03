@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Detalle de Medico Veterinario:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Medico Veterinario</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Detalle de Medico Veterinario</h3>
+		<div class="col-sm-10" align="center">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idMedico"
+					value="Codigo del Medico Veterinario: " styleClass="control-label" />
+				<h:outputLabel for="idMedico" styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.idMedicoVeterinario}" />
+				<br />
+				<br />
+				<h:outputLabel for="veterinariaMedico" value="Veterinaria: "
+					styleClass="control-label" />
+				<h:outputLabel for="veterinariaMedico" styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.veterinariaMedico.idVeterinaria}">
+				</h:outputLabel>
+				<h:outputLabel for="veterinariaMedicoN" styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.veterinariaMedico.nombreVeterinaria}">
+				</h:outputLabel>
+
+				<br />
+				<br />
+
+				<h:outputLabel for="institucionMedico"
+					value="Institución que certifica al médico:"
+					styleClass="control-label" />
+				<h:outputLabel for="institucionMedico" styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.institucionMedico}">
+
+				</h:outputLabel>
+				<br />
+				<br />
+				<br />
+
+				<h:outputLabel for="direccionMedico" value="Dirección del Médico: "
+					styleClass="control-label" />
+				<h:outputLabel for="direccionMedico" styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.direccionMedico}" />
+
+
+				<br />
+				<br />
+				<br />
+
+				<h:outputLabel for="nombreMedico" value="Nombre del Médico: "
+					styleClass="control-label" />
+				<h:outputLabel for="nombreMedico" styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.nombreMedico}" />
+
+
+				<br />
+				<br />
+				<br />
+
+				<h:outputLabel for="edadMedico" value="Edad del Médico: "
+					styleClass="control-label" />
+				<h:outputLabel for="edadMedico" styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.edadMedico}" />
+
+
+				<br />
+				<br />
+				<br />
+
+				<h:outputLabel for="dniMedico" value="DNI del Médico: "
+					styleClass="control-label" />
+				<h:outputLabel for="dniMedico" styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.dniMedico}" />
+
+
+				<br />
+				<br />
+				<br />
+				<h:outputLabel for="estadoMedico" value="Estado del Médico: "
+					styleClass="control-label" />
+				<h:outputLabel for="estadoMedico" styleClass="form-control"
+					value="#{medicoVeterinarioController.medicoVeterinario.estadoMedico}">
+
+
+				</h:outputLabel>
+
+
+				<br />
+				<br />
+				<br />
+
+
+				<p:commandButton value="Regresar"
+					action="listMedicoVeterinario?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Compras:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Compra</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Registro de Compras</h3>
+		<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idCompra" value="Codigo de la compra:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="idCompra"
+					styleClass="form-control" 
+					value="#{compraController.compra.idCompra}" required="true" />
+
+				<br />
+				<p:outputLabel for="idCliente" value="Cliente:"></p:outputLabel>
+				<p:selectOneMenu id="idCliente"
+					value="#{compraController.compra.clienteCompra}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems value="#{compraController.listaClientes}" var="cli"
+						itemLabel="#{cli.nombreCliente}" itemValue="#{m}" />
+				</p:selectOneMenu>
+				<br></br>
+
+				<br />
+				<p:outputLabel for="idPetshop" value="Petshop:"></p:outputLabel>
+				<p:selectOneMenu id="idPetshop"
+					value="#{compraController.compra.petshopCompra}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems value="#{compraController.listaPetshops}" var="pt"
+						itemLabel="#{pt.nombrePetshop}" itemValue="#{m}" />
+				</p:selectOneMenu>
+				<br></br>
+				<br />
+				<h:outputLabel for="igvCompra" value="IGV de la compra:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="igvCompra"
+					styleClass="form-control"
+					value="#{compraController.compra.igvCompra}" maxlength="5"
+					required="true" />
+
+				<h:outputLabel for="totalCompra" value="Monto total de la compra:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="totalCompra"
+					styleClass="form-control"
+					value="#{compraController.compra.totalCompra}" maxlength="6"
+					required="true" />
+
+				<br />
+
+				<p:commandButton value="Actualizar"
+					actionListener="#{compraController.modificar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="listCompra?faces-redirect=true" />
+				<p:commandButton value="Cancelar"
+					action="listCompra?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

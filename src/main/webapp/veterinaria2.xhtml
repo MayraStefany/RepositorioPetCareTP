@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Veterinarias:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Veterinaria</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Registro de Mascotas</h3>
+
+		<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idVeterinaria" value="Codigo de la veterinaria:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="idVeterinaria"
+					styleClass="form-control" 
+					value="#{veterinariaController.veterinaria.idVeterinaria}"
+					required="true" />
+
+				<h:outputLabel for="nombreVeterinaria"
+					value="Nombre comercial de la veterinaria:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="nombreVeterinaria"
+					styleClass="form-control"
+					value="#{veterinariaController.veterinaria.nombreVeterinaria}"
+					maxlength="30" required="true" />
+
+				<h:outputLabel for="rucVeterinaria" value="RUC de la veterinaria:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="rucVeterinaria"
+					styleClass="form-control"
+					value="#{veterinariaController.veterinaria.rucVeterinaria}"
+					maxlength="11" required="true" />
+
+				<h:outputLabel for="tiempoVeterinaria"
+					value="Número de años que tiene la veterinanria funcionando:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="tiempoVeterinaria"
+					styleClass="form-control"
+					value="#{veterinariaController.veterinaria.tiempoVeterinaria}"
+					maxlength="3" required="true" />
+
+				<h:outputLabel for="horarioVeterinaria"
+					value="Horario en el que atiende la veterinaria:"
+					styleClass="control-label" />
+				<br />
+				<p:selectOneMenu id="horarioVeterinaria"
+					value="#{veterinariaController.veterinaria.horarioVeterinaria}">
+					<f:selectItem itemLabel="--Select--" noSelectionOption="true" />
+					<f:selectItem itemLabel="Toda_la_semana_24_horas"
+						itemValue="Toda_la_semana_24_horas" />
+					<f:selectItem itemLabel="Lunes_a_viernes_24_horas"
+						itemValue="Lunes_a_viernes_24_horas" />
+					<f:selectItem itemLabel="Lunes_a_sabado_24_horas"
+						itemValue="Lunes_a_sabado_24_horas" />
+					<f:selectItem itemLabel="Toda_la_semana_8_horas"
+						itemValue="Toda_la_semana_8_horas" />
+					<f:selectItem itemLabel="Lunes_a_viernes_8_horas"
+						itemValue="Lunes_a_viernes_8_horas" />
+					<f:selectItem itemLabel="Lunes_a_sabado_8_horas"
+						itemValue="Lunes_a_sabado_8_horas" />
+					<f:selectItem itemLabel="Otro" itemValue="Otro" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br />
+
+
+				<h:outputLabel for="estadoVeterinaria"
+					value="Estado en el que se encuentra la veterinaria:"
+					styleClass="control-label" />
+				<br />
+				<p:selectOneMenu id="estadoVeterinaria"
+					value="#{veterinariaController.veterinaria.estadoVeterinaria}">
+					<f:selectItem itemLabel="--Select--" noSelectionOption="true" />
+					<f:selectItem itemLabel="Activo" itemValue="Activo" />
+					<f:selectItem itemLabel="Clausurado" itemValue="Clausurado" />
+					<f:selectItem itemLabel="En_mantenimiento"
+						itemValue="En_mantenimiento" />
+					<f:selectItem itemLabel="Otro" itemValue="Otro" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br />
+
+				<h:outputLabel for="celularVeterinaria"
+					value="Ingrese el número celular del contacto de la veterinaria:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="celularVeterinaria"
+					styleClass="form-control"
+					value="#{veterinariaController.veterinaria.celularVeterinaria}"
+					maxlength="9" required="true" />
+
+				<h:outputLabel for="direccionVeterinaria"
+					value="Direccion de la veterinaria:" styleClass="control-label" />
+				<p:inputText autocomplete="off" id="direccionVeterinaria"
+					styleClass="form-control"
+					value="#{veterinariaController.veterinaria.direccionVeterinaria}"
+					maxlength="70" required="true" />
+
+				<h:outputLabel for="distritoVeterinaria"
+					value="Distrito en el que se encuentra la veterinaria:"
+					styleClass="control-label" />
+				<br />
+				<p:selectOneMenu id="distritoVeterinaria"
+					value="#{veterinariaController.veterinaria.distritoVeterinaria}">
+					<f:selectItem itemLabel="--Select--" noSelectionOption="true" />
+					<f:selectItem itemLabel="Surco" itemValue="Surco" />
+					<f:selectItem itemLabel="San_Isidro" itemValue="San_Isidro" />
+					<f:selectItem itemLabel="Miraflores" itemValue="Miraflores" />
+					<f:selectItem itemLabel="Magdalena" itemValue="Magdalena" />
+					<f:selectItem itemLabel="San_Borja" itemValue="San_Borja" />
+					<f:selectItem itemLabel="Barranco" itemValue="Barranco" />
+					<f:selectItem itemLabel="Otro" itemValue="Otro" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br />
+
+
+				<p:commandButton value="Actualizar"
+					actionListener="#{veterinariaController.modificar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="listVeterinaria?faces-redirect=true" />
+				<p:commandButton value="Cancelar"
+					action="listVeterinaria?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

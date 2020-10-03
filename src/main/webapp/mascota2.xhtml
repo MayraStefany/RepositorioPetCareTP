@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Mascota:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Mascota</span>
+	</ui:define>
+
+	<ui:define name="content">
+
+		<h3 style="margin-left: 5%">Registro de Mascotas</h3>
+		<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idMascota" value="Codigo de la mascota: "
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="idMascota"
+					styleClass="form-control"
+					value="#{mascotaController.mascota.idMascota}" required="true" />
+
+				<h:outputLabel for="nombreMascota" value="Nombres de la mascota:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="nombreMascota"
+					styleClass="form-control"
+					value="#{mascotaController.mascota.nombreMascota}" maxlength="30"
+					required="true" />
+
+				<h:outputLabel for="razaMascota" value="Raza de la mascota:"
+					styleClass="control-label" />
+				<br />
+				<p:selectOneMenu id="razaMascota"
+					value="#{mascotaController.mascota.razaMascota}">
+					<f:selectItem itemLabel="--Select--" noSelectionOption="true" />
+					<f:selectItem itemLabel="Pastor_alemán" itemValue="Pastor_alemán" />
+					<f:selectItem itemLabel="Labrador_Retriever"
+						itemValue="Labrador_Retriever" />
+					<f:selectItem itemLabel="Yorkshire_terrier"
+						itemValue="Yorkshire_terrier" />
+					<f:selectItem itemLabel="Beagle" itemValue="Beagle" />
+					<f:selectItem itemLabel="Golden Retriever"
+						itemValue="Golden Retriever" />
+					<f:selectItem itemLabel="Chihuahua" itemValue="Chihuahua" />
+					<f:selectItem itemLabel="Otro" itemValue="Otro" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br />
+
+				<h:outputLabel for="edadMascota"
+					value="Edad de la mascota (Años enteros):"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="edadMascota"
+					styleClass="form-control"
+					value="#{mascotaController.mascota.edadMascota}" maxlength="2"
+					required="true" />
+				<br />
+
+
+				<p:commandButton value="Actualizar"
+					actionListener="#{mascotaController.modificar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="listMascota?faces-redirect=true" />
+
+				<p:commandButton value="Cancelar"
+					action="listMascota?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Recetas:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Recetas</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Registro de Recetas</h3>
+		<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idReceta" value="Codigo de la Recetas: "
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="idReceta"
+					styleClass="form-control" disabled="true"
+					value="#{recetaController.receta.idReceta}" required="true" />
+				<br />
+				<br />
+				<h:outputLabel for="atencionReceta" value="Código de la atención: "
+					styleClass="control-label" />
+				<p:selectOneMenu id="atencionReceta"
+					value="#{recetaController.receta.atencionReceta}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems value="#{recetaController.listaAtencions}" var="cli"
+						itemLabel="#{cli.idAtencion} - #{cli.reservaAtencion.clienteReserva.nombreCliente}"
+						itemValue="#{m}" />
+				</p:selectOneMenu>
+				<h:message for="selecOneMenu" />
+				<br />
+				<br />
+
+
+				<h:outputLabel for="descripcionReceta" value="Descripción: "
+					styleClass="control-label" />
+				<p:inputTextarea autocomplete="off" id="descripcionReceta"
+					styleClass="form-control"
+					value="#{recetaController.receta.descripcionReceta}" maxlength="60"
+					required="true" />
+				<br />
+				<br />
+				<br />
+				<h:outputLabel for="totalReceta" value="Precio total de la receta: "
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="totalReceta"
+					styleClass="form-control"
+					value="#{recetaController.receta.totalReceta}" maxlength="4"
+					required="true" />
+				<br />
+				<br />
+				<br />
+				<h:outputLabel for="igvReceta" value="IGV de la receta: "
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="igvReceta"
+					styleClass="form-control"
+					value="#{recetaController.receta.igvReceta}" maxlength="3"
+					required="true" />
+				<br />
+				<br />
+				<br />
+
+				<p:commandButton value="Grabar"
+					actionListener="#{recetaController.insertar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="listRecetas?faces-redirect=true" />
+				<p:commandButton value="Cancelar"
+					action="listRecetas?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

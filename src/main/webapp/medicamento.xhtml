@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Medicamento:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Medicamento</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Registro de Medicamentos</h3>
+		<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+			<br></br>
+			<h:form>
+				<h:outputLabel for="idMedicamento" value="Codigo de medicamento:"
+					styleClass="control-label" />
+
+				<p:inputText autocomplete="off" id="idMedicamento"
+					styleClass="form-control" disabled="true"
+					value="#{medicamentoController.medicamento.idMedicamento}"
+					required="true" />
+
+				<h:outputLabel for="nombreMedicamento"
+					value="Nombre del medicamento:" styleClass="control-label" />
+				<p:inputText autocomplete="off" id="nombreMedicamento"
+					styleClass="form-control"
+					value="#{medicamentoController.medicamento.nombreMedicamento}"
+					maxlength="50" required="true" />
+
+				<h:outputLabel for="tipoMedicamento" value="Tipo de medicamento:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="tipoMedicamento"
+					styleClass="form-control"
+					value="#{medicamentoController.medicamento.tipoMedicamento}"
+					maxlength="50" required="true" />
+
+				<h:outputLabel for="laboratorioMedicamento"
+					value="Laboratorio que desarrolla el medicamento:"
+					styleClass="control-label" />
+				<p:inputText autocomplete="off" id="laboratorioMedicamento"
+					styleClass="form-control"
+					value="#{medicamentoController.medicamento.laboratorioMedicamento}"
+					maxlength="60" required="true" />
+
+				<h:outputLabel for="fechaMedicamento"
+					value="Fecha de fabricacion del medicamento:"
+					styleClass="control-label" />
+				<p:calendar id="fechaMedicamento" pattern="dd/MM/yyyy"
+					value="#{medicamentoController.medicamento.fechaMedicamento}"
+					showOn="button" timeZone="UTC" required="true">
+				</p:calendar>
+				<br />
+
+
+				<p:commandButton value="Grabar"
+					actionListener="#{medicamentoController.insertar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="listMedicamento?faces-redirect=true" />
+				<p:commandButton value="Cancelar"
+					action="listMedicmaento?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

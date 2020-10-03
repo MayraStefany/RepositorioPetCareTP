@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="master.xhtml">
+	<ui:define name="title">
+        .:Listado de Medicamentos:.
+    </ui:define>
+	<ui:define name="titleCont">
+		<span>Medicamentos</span>
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h3 style="margin-left: 5%">Lista de Medicamentos</h3>
+			<div class="row" align="center">
+				<p:commandButton value="Nuevo"
+					action="#{medicamentoController.nuevoMedicamento()}"
+					styleClass="btn btn-primary" ajax="false" style="margin-left:85%" />
+			</div>
+			<br></br>
+			<div class="row">
+				<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstMedicamento" var="mot"
+							value="#{medicamentoController.listaMedicamentos}"
+							paginator="true" paginatorPosition="top"
+							rowsPerPageTemplate="10,20,30,40,50" rows="10"
+							styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="Id" sortBy="#{mot.idMedicamento}">
+								<h:commandLink value="#{mot.idMedicamento}"
+									class="btn btn-primary btn-xs"
+									action="#{medicamentoController.detallesMedicamento(mot)}" />
+							</p:column>
+
+							<p:column headerText="Nombre" sortBy="#{mot.nombreMedicamento}">
+								<h:outputText value="#{mot.nombreMedicamento}" />
+							</p:column>
+
+							<p:column headerText="Laboratorio"
+								sortBy="#{mot.laboratorioMedicamento}">
+								<h:outputText value="#{mot.laboratorioMedicamento}" />
+							</p:column>
+
+							<p:column headerText="Fecha" sortBy="#{mot.fechaMedicamento}">
+								<h:outputText value="#{mot.fechaMedicamento}">
+									<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+								</h:outputText>
+							</p:column>
+
+
+
+
+
+
+
+							<p:column headerText="Operación" exportable="false"
+								style=" justify-content: space-around;">
+
+								<h:commandLink action="lstlstMedicamento" value="Eliminar"
+									style="color:red; display:flex;"
+									actionListener="#{medicamentoController.eliminar(mot)}" />
+
+								<h:commandLink value="Modificar"
+									action="#{medicamentoController.ModifMedicamento(mot)}"
+									style="color:blue;" />
+
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+	<ui:define name="footerCont">
+	</ui:define>
+</ui:composition>
+</html>

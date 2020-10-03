@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="master.xhtml">
+	<ui:define name="title">
+        .:Listado de Recetas:.
+    </ui:define>
+	<ui:define name="titleCont">
+		<span>Listado de Recetas</span>
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h3 style="margin-left: 5%">Lista de Recetas</h3>
+			<div class="row" align="center">
+				<p:commandButton value="Nuevo"
+					action="#{recetaController.nuevaReceta()}"
+					styleClass="btn btn-primary" ajax="false" style="margin-left:85%" />
+			</div>
+			<br></br>
+			<div class="row">
+				<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstReceta" var="mot"
+							value="#{recetaController.listaRecetas}"
+							paginator="true" paginatorPosition="top"
+							rowsPerPageTemplate="10,20,30,40,50" rows="10"
+							styleClass="table table-bordered"
+							emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="Id" sortBy="#{mot.idReceta}">
+								<h:commandLink value="#{mot.idReceta}"
+									class="btn btn-primary btn-xs"
+									action="#{recetaController.detallesReceta(mot)}" />
+							</p:column>
+
+							<p:column headerText="Atención" sortBy="#{mot.atencionReceta}">
+								<h:outputText value="#{mot.atencionReceta.idAtencion}" />
+							</p:column>
+
+							<p:column headerText="Precio"
+								sortBy="#{mot.totalReceta}">
+								<h:outputText value="#{mot.totalReceta}" />
+							</p:column>
+
+							<p:column headerText="Operación" exportable="false"
+								style=" justify-content: space-around;">
+
+								<h:commandLink action="lstlstMedicamento" value="Eliminar"
+									style="color:red; display:flex;"
+									actionListener="#{recetaController.eliminar(mot)}" />
+
+								<h:commandLink value="Modificar"
+									action="#{recetaController.ModifReceta(mot)}"
+									style="color:blue;" />
+
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+	<ui:define name="footerCont">
+	</ui:define>
+</ui:composition>
+</html>

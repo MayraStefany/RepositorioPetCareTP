@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="master.xhtml">
+	<ui:define name="title">
+        .:Listado de Mascotas:.
+    </ui:define>
+	<ui:define name="titleCont">
+		<span>Mascotas </span>
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h3 style="margin-left: 5%">Lista de Mascotas</h3>
+
+			<div class="row" align="center">
+				<p:commandButton value="Nuevo"
+					action="#{mascotaController.nuevaMascota()}"
+					styleClass="btn btn-primary has-ripple" ajax="false"
+					style="margin-left:85%" />
+			</div>
+			<br></br>
+			<div class="row">
+				<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable class="table" id="lstMascota" var="mot"
+							value="#{mascotaController.listaMascotas}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" emptyMessage="No existen registros" rowIndexVar="item"
+							style="margin-bottom:0; color:red">
+
+							<p:column headerText="Codigo" sortBy="#{mot.idMascota}">
+								<h:commandLink value="#{mot.idMascota}"
+									class="btn btn-primary btn-xs"
+									action="#{mascotaController.detallesMascota(mot)}" />
+							</p:column>
+
+							<p:column headerText="Nombre" sortBy="#{mot.nombreMascota}">
+								<h:outputText value="#{mot.nombreMascota}" />
+							</p:column>
+
+							<p:column headerText="Raza" sortBy="#{mot.razaMascota}">
+								<h:outputText value="#{mot.razaMascota}" />
+							</p:column>
+
+							<p:column headerText="Edad" sortBy="#{mot.edadMascota}">
+								<h:outputText value="#{mot.edadMascota}" />
+							</p:column>
+
+
+							<p:column headerText="Operación" exportable="false"
+								style=" justify-content: space-around;">
+
+								<h:commandLink action="lstlstMascota" value="Eliminar"
+									style="color:red; display:flex;"
+									actionListener="#{mascotaController.eliminar(mot)}">
+									<i class="feather icon-trash"></i>
+								</h:commandLink>
+
+
+								<h:commandLink value="Modificar"
+									action="#{mascotaController.ModifMascota(mot)}"
+									style="color:blue;">
+									<i class="feather icon-edit"></i>
+								</h:commandLink>
+
+							</p:column>
+
+						</p:dataTable>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+	<ui:define name="footerCont">
+	</ui:define>
+</ui:composition>
+</html>

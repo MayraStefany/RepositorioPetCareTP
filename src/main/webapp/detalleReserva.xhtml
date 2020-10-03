@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Reserva:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Reserva</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h3 style="margin-left: 5%">Registro de Reserva</h3>
+		<div class="col-sm-10" style="margin-left: auto; margin-right: auto">
+			<br></br>
+			<h:form>
+
+				<h:outputLabel for="idCliente" value="Codigo de la reserva:"
+					styleClass="control-label" />
+				<h:outputLabel for="idReserva" styleClass="form-control"
+					value="#{reservaController.reserva.idReserva}" />
+				<br />
+				<br />
+				<h:outputLabel for="nombreCliente" value="Nombres del cliente:"
+					styleClass="control-label" />
+				<h:outputLabel for="nombreCliente"
+					value="#{reservaController.reserva.clienteReserva.nombreCliente}"
+					styleClass="form-control">
+				</h:outputLabel>
+				<br />
+				<br />
+				<h:outputLabel for="nombreVeterinaria" value="Veterinaria: "
+					styleClass="control-label" />
+				<h:outputLabel for="nombreVeterinaria"
+					value="#{reservaController.reserva.veterinariaReserva.nombreVeterinaria}"
+					styleClass="form-control">
+				</h:outputLabel>
+				<br />
+				<br />
+				<h:outputLabel for="nombreMascota" value="Nombre de la mascota: "
+					styleClass="control-label" />
+				<h:outputLabel for="nombreMascota"
+					value="#{reservaController.reserva.mascotaReserva.nombreMascota}"
+					styleClass="form-control">
+				</h:outputLabel>
+				<br />
+				<br />
+				<h:outputLabel for="fechaReserva" value="Fecha de la reserva:"
+					styleClass="control-label" />
+				<h:outputLabel for="fechaReserva" pattern="dd/MM/yyyy"
+					value="#{reservaController.reserva.fechaReserva}"
+					styleClass="form-control">
+				</h:outputLabel>
+				<br />
+				<br />
+				<h:outputLabel for="estadoReserva" value="Estado de la Reserva:"
+					styleClass="control-label" />
+				<h:outputLabel for="estadoReserva"
+					value="#{reservaController.reserva.estadoReserva}"
+					styleClass="form-control">
+				</h:outputLabel>
+				<br />
+				<br />
+
+
+
+				<h:outputLabel for="descripcionReserva" value="Descripción: "
+					styleClass="control-label" />
+				<h:outputLabel for="descripcionReserva"
+					styleClass="form-control"
+					value="#{reservaController.reserva.descripcionReserva}"
+					 />
+
+
+				<br />
+				<br />
+
+
+				<p:commandButton value="Cancelar"
+					action="listReserva?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+			</h:form>
+		</div>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

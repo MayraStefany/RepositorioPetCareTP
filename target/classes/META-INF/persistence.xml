@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="ProyectoAlarcon"
+		transaction-type="JTA">
+
+		<jta-data-source>java:/practicasDS</jta-data-source>
+
+		<class>pe.edu.upc.entity.Atencion</class>
+		<class>pe.edu.upc.entity.Cliente</class>
+		<class>pe.edu.upc.entity.Compra</class>
+		<class>pe.edu.upc.entity.DetalleCompra</class>
+		<class>pe.edu.upc.entity.DetalleReceta</class>
+		<class>pe.edu.upc.entity.Mascota</class>
+		<class>pe.edu.upc.entity.Medicamento</class>
+		<class>pe.edu.upc.entity.MedicoVeterinario</class>
+		<class>pe.edu.upc.entity.Petshop</class>
+		<class>pe.edu.upc.entity.Producto</class>
+		<class>pe.edu.upc.entity.Receta</class>
+		<class>pe.edu.upc.entity.Reserva</class>
+		<class>pe.edu.upc.entity.Veterinaria</class>
+
+		<properties>
+			<property
+				name="javax.persistence.schema-generation.database.action"
+				value="update" />
+		</properties>
+
+	</persistence-unit>
+</persistence>
